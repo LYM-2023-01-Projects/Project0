@@ -66,52 +66,69 @@ def Parse_Block_of_Instructions(first_token_remaing_lexemes, remaining_lexemes):
 
 def Parse_VARS_and_PROCS(first_token_remaing_lexemes, remaining_lexemes):
     
+    
     # We check whether the first token after kw VARS be an id
 
-    if (len(first_token_remaing_lexemes) >= 4) and (first_token_remaing_lexemes[0:3] =='id'):
+    # if (len(first_token_remaing_lexemes) >= 4) and (first_token_remaing_lexemes[0:3] =='id'):
 
 
-        # VARS must end with a semicolon
+    #     # VARS must end with a semicolon
 
-        if "sp ;" not in remaining_lexemes:
+    #     if "sp ;" not in remaining_lexemes:
 
-            return "The input is syntactically incorrect"
+    #         return "The input is syntactically incorrect"
         
-        else:
-            pos_of_semicolon = remaining_lexemes.index("sp ;")
+    #     # after the semicolon there must be a kw PROCS
 
-            next_token = NextToken(remaining_lexemes) 
-            remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
+    #     else:
+    #         pos_of_semicolon = remaining_lexemes.index("sp ;")
+    #         token_after_semicolon = remaining_lexemes[pos_of_semicolon+1]
 
-            # We check if there's only one var, then the procedure definition must follow
-            if next_token == "sp ;":
-                
-                next_token = NextToken(remaining_lexemes) 
-                remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
+    #         if token_after_semicolon == "kw PROCS":
 
-                # After the colon, the kw PROCs must follow
+    #             next_token = NextToken(remaining_lexemes) 
+    #             remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
 
-                if next_token == "kw PROCS":
+    #             #verificamos
+    #             correct_vars_syntaxis =  Parse_List_VARS(next_token, remaining_lexemes)
                 
-                    next_token = NextToken(remaining_lexemes) 
-                    remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
+    #             if correct_vars_syntaxis
+    #         else:
+
+
+
+
+
+    #         # We check if there's only one var, then the procedure definition must follow
+    #         if next_token == "sp ;":
                 
-                    return Parse_Procedure_definition(next_token, remaining_lexemes)
+    #             next_token = NextToken(remaining_lexemes) 
+    #             remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
+
+    #             # After the colon, the kw PROCs must follow
+
+    #             if next_token == "kw PROCS":
                 
-                # if the kw PROCs doesn't follow after the list of variables, it is an error
+    #                 next_token = NextToken(remaining_lexemes) 
+    #                 remaining_lexemes = Remaining_Lexemes(remaining_lexemes)
                 
-                else:
-                    return "The input is syntactically incorrect"
+    #                 return Parse_Procedure_definition(next_token, remaining_lexemes)
+                
+    #             # if the kw PROCs doesn't follow after the list of variables, it is an error
+                
+    #             else:
+    #                 return "The input is syntactically incorrect"
         
-            else:
+    #         else:
 
-                return Parse_List_VARS(next_token, remaining_lexemes)
+    #             return Parse_List_VARS(next_token, remaining_lexemes)
 
-    # If the list of VARS is empty, then the input would be syntactically incorrect
+    # # If the list of VARS is empty, then the input would be syntactically incorrect
     
-    else:
-        return "The input is syntactically incorrect"
+    # else:
+    #     return "The input is syntactically incorrect"
 
+    pass
 
 
 def Parse_List_VARS(next_token, remaining_lexemes):
